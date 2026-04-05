@@ -1,413 +1,163 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Apresentação exclusiva</title>
-
-
-
-    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-
-    <link rel="preload" href="https://scripts.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/players/69c5a3b796fd2c2d9b236afe/v4/player.js" as="script">
-
-    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-
-    <link rel="preload" href="https://cdn.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/69a0b0dadfeab82d62493612/main.m3u8" as="fetch">
-
-    <link rel="dns-prefetch" href="https://cdn.converteai.net">
-
-    <link rel="dns-prefetch" href="https://scripts.converteai.net">
-
-    <link rel="dns-prefetch" href="https://images.converteai.net">
-
-    <link rel="dns-prefetch" href="https://api.vturb.com.br">
-
-
-
+    <title>Repositório de Normatização Técnica - Dropix Editora</title>
     <style>
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
-        }
-
-
-
         body {
-
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-            min-height: 100vh;
-
-            background: linear-gradient(180deg, #1a0b0e 0%, #3d1218 30%, #5a1a1a 60%, #3d1218 100%);
-
-            background-attachment: fixed;
-
-            color: #f0e6e6;
-
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
         }
 
-
-
-        .top-bar {
-
-            background: rgba(255, 255, 255, 0.04);
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
-            padding: 12px 20px;
-
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #004a80;
+            padding: 20px 0;
             text-align: center;
-
         }
 
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 60px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
 
-
-        .top-bar span {
-
-            font-size: 12px;
-
-            font-weight: 500;
-
-            color: rgba(255, 255, 255, 0.45);
-
-            letter-spacing: 2.5px;
-
+        nav {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 14px;
             text-transform: uppercase;
-
-        }
-
-
-
-        .hero-section {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            padding: 40px 20px 60px;
-
-            max-width: 820px;
-
-            margin: 0 auto;
-
-        }
-
-
-
-        .badge {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 6px;
-
-            background: rgba(229, 57, 53, 0.12);
-
-            border: 1px solid rgba(229, 57, 53, 0.3);
-
-            border-radius: 20px;
-
-            padding: 6px 16px;
-
-            margin-top: 30px;
-
-        }
-
-
-
-        .badge-dot {
-
-            width: 6px;
-
-            height: 6px;
-
-            background: #e53935;
-
-            border-radius: 50%;
-
-            animation: pulse-dot 2s ease-in-out infinite;
-
-        }
-
-
-
-        @keyframes pulse-dot {
-
-            0%, 100% { opacity: 1; }
-
-            50% { opacity: 0.4; }
-
-        }
-
-
-
-        .badge-text {
-
-            font-size: 11px;
-
-            font-weight: 600;
-
-            color: #e53935;
-
             letter-spacing: 1px;
-
-            text-transform: uppercase;
-
         }
 
-
-
-        .player-wrapper {
-
-            width: 100%;
-
-            border-radius: 16px;
-
-            overflow: hidden;
-
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-
-            background: #1a0b0e;
-
-        }
-
-
-
-        .player-wrapper vturb-smartplayer {
-
-            display: block;
-
-            width: 100%;
-
-        }
-
-
-
-        .site-footer {
-
-            margin-top: 300px;
-
-            padding: 24px 20px;
-
-            text-align: center;
-
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-
-        }
-
-
-
-        .site-footer-nav {
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 8px;
-
-            flex-wrap: wrap;
-
-        }
-
-
-
-        .site-footer-nav a {
-
-            color: rgba(255, 255, 255, 0.25);
-
+        nav a {
             text-decoration: none;
-
-            font-size: 11px;
-
-            transition: color 0.2s;
-
+            color: #004a80;
+            margin: 0 15px;
+            font-weight: bold;
         }
 
-
-
-        .site-footer-nav a:hover {
-
-            color: rgba(255, 255, 255, 0.5);
-
+        h1 {
+            color: #004a80;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
         }
 
-
-
-        .site-footer-nav .sep {
-
-            color: rgba(255, 255, 255, 0.12);
-
-            font-size: 10px;
-
-            user-select: none;
-
+        h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-top: 40px;
         }
 
-
-
-        @media (max-width: 600px) {
-
-            .top-bar {
-
-                padding: 10px 15px;
-
-            }
-
-
-
-            .top-bar span {
-
-                font-size: 10px;
-
-                letter-spacing: 2px;
-
-            }
-
-
-
-            .hero-section {
-
-                padding: 28px 16px 40px;
-
-            }
-
-
-
-            .player-wrapper {
-
-                border-radius: 12px;
-
-            }
-
-
-
-            .site-footer {
-
-                margin-top: 200px;
-
-            }
-
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
         }
 
+        .sidebar-info {
+            background-color: #f9f9f9;
+            border-left: 5px solid #004a80;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        .footer-content {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 60px;
+        }
+
+        .footer-content a {
+            color: #ffffff;
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+
+        .btn-doc {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #004a80;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; margin: 10px; }
+            h1 { font-size: 22px; }
+        }
     </style>
-
 </head>
-
 <body>
 
-    <div class="top-bar">
+    <header>
+        <div style="font-weight: bold; color: #004a80; font-size: 24px;">DROPIX</div>
+        <div style="font-size: 12px; color: #666; text-transform: uppercase;">Editora e Marketing Ltda</div>
+    </header>
 
-        <span>Apresentação Exclusiva</span>
-
-    </div>
-
-
-
-    <section class="hero-section">
-
-        <div class="player-wrapper">
-
-            <vturb-smartplayer id="vid-69c5a3b796fd2c2d9b236afe" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
-
-        </div>
-
-
-
-        <div class="badge">
-
-            <span class="badge-dot"></span>
-
-            <span class="badge-text">Disponível agora</span>
-
-        </div>
-
-    </section>
-
-
-
-    <footer class="site-footer">
-
-        <nav class="site-footer-nav">
-
-            <a href="politica-privacidade.html">Privacidade</a>
-
-            <span class="sep">&middot;</span>
-
-            <a href="termos-uso.html">Termos</a>
-
-            <span class="sep">&middot;</span>
-
-            <a href="aviso-legal.html">Legal</a>
-
-            <span class="sep">&middot;</span>
-
-            <a href="politica-reembolso.html">Reembolso</a>
-
+    <div class="container">
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Normas ABNT</a>
+            <a href="#">Processos Editoriais</a>
+            <a href="#">Publicações</a>
+            <a href="#">Contato</a>
         </nav>
 
-    </footer>
+        <h1>Manual de Padronização para Publicações Técnicas e Editoração Científica</h1>
+        
+        <p>A sistematização da produção editorial contemporânea exige um rigor normativo que transcende a simples correção gramatical. No âmbito da <strong>Dropix Editora e Marketing Ltda</strong>, sediada em São José/SC, a padronização técnica é compreendida como a base fundamental para a disseminação do conhecimento científico e corporativo. Este repositório visa orientar autores e colaboradores sobre os critérios de excelência exigidos em nossas publicações.</p>
 
+        <div class="sidebar-info">
+            "A clareza terminológica e a precisão estrutural são os pilares que garantem a integridade da informação em meios digitais e impressos." - Conselho Editorial Dropix.
+        </div>
 
+        <h2>1. Critérios de Estruturação Linguística</h2>
+        <p>A adoção de uma linguagem técnica e objetiva é indispensável. De acordo com as diretrizes da ABNT NBR 14724, todos os trabalhos técnicos submetidos à nossa editoração devem apresentar uma sequência lógica que compreenda elementos pré-textuais, textuais e pós-textuais. A coesão e a coerência são analisadas por meio de algoritmos de processamento de linguagem natural e revisão humana detalhada, garantindo que o propósito da obra seja mantido em todas as suas instâncias de leitura.</p>
 
-    <script type="text/javascript">
+        <h2>2. Gestão de Metadados e Identificação Internacional</h2>
+        <p>Toda obra editada pela Dropix recebe a atribuição do ISBN (International Standard Book Number), o que assegura a sua rastreabilidade e inclusão em catálogos mundiais. Além disso, incentivamos o uso de DOIs (Digital Object Identifiers) para produções periódicas, facilitando a citação e a indexação em bases de dados científicas de alta relevância.</p>
 
-        var s = document.createElement("script");
+        <h2>3. Ética na Comunicação e Responsabilidade Autoral</h2>
+        <p>O compromisso com a veracidade dos dados é inegociável. Nossos processos de editoração incluem a verificação de originalidade e o cumprimento rigoroso da Lei de Direitos Autorais (Lei nº 9.610/98). A Dropix Editora promove workshops semestrais sobre integridade acadêmica e práticas éticas na publicidade digital, assegurando que o mercado de São José e região receba conteúdos de alto valor educacional.</p>
 
-        s.src = "https://scripts.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/players/69c5a3b796fd2c2d9b236afe/v4/player.js";
+        <a href="#" class="btn-doc">Acessar Guia de Estilo Completo (PDF)</a>
 
-        s.async = !0;
+        <h2 style="border-top: 1px solid #eee; padding-top: 30px;">Sobre a Instituição</h2>
+        <p>A Dropix Editora e Marketing Ltda é uma Sociedade Empresária Limitada dedicada à edição de livros, manuais técnicos e promoção de estratégias de marketing educacional. Com foco em inovação e transparência, atuamos no desenvolvimento de soluções que conectam o saber acadêmico às demandas do mercado moderno.</p>
+    </div>
 
-        document.head.appendChild(s);
-
-    </script>
-
-
-
-    <script>
-
-        (function() {
-
-            var currentParams = window.location.search;
-
-            if (currentParams) {
-
-                var footerLinks = document.querySelectorAll('.site-footer-nav a');
-
-                footerLinks.forEach(function(link) {
-
-                    var linkHref = link.getAttribute('href');
-
-                    if (!linkHref.startsWith('http')) {
-
-                        link.setAttribute('href', linkHref + currentParams);
-
-                    }
-
-                });
-
-            }
-
-        })();
-
-    </script>
+    <div class="footer-content">
+        <p><strong>Dropix Editora e Marketing Ltda</strong><br>
+        CNPJ: 65.255.590/0001-49<br>
+        Rua Antonio Basil Schroeder, 37 - Barreiros, São José - SC, 88.110-400</p>
+        
+        <div style="margin-top: 20px;">
+            <a href="#">Política de Privacidade</a> | 
+            <a href="#">Termos de Uso</a> | 
+            <a href="#">Ética e Compliance</a> | 
+            <a href="#">Contato</a>
+        </div>
+        
+        <p style="margin-top: 30px; opacity: 0.7;">&copy; 2026 Dropix - Todos os direitos reservados.</p>
+    </div>
 
 </body>
-
 </html>
