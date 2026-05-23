@@ -1,951 +1,528 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LordVigor - Saúde</title>
-  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload" href="https://scripts.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/players/69a35d0a39c8b3b88468d00c/v4/player.js" as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/69a35b58260b750c46a6003a/main.m3u8" as="fetch">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://api.vturb.com.br">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: #fff;
-      color: #333;
-    }
-
-    /* Header */
-    .header {
-      background: #cc0000;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .header h1 {
-      color: #fff;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .header .menu-icon {
-      position: absolute;
-      right: 20px;
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .header .menu-icon span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: #fff;
-      border-radius: 2px;
-    }
-
-    /* Banner de urgência */
-    .urgency-banner {
-      background: #990000;
-      color: #fff;
-      text-align: center;
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-
-    .urgency-banner strong {
-      font-weight: 700;
-    }
-
-    /* Seção do vídeo */
-    .video-section {
-      background: #fff;
-      padding: 30px 15px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .video-wrapper {
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .sound-notice {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #333;
-    }
-
-    .sound-icon {
-      width: 22px;
-      height: 22px;
-    }
-
-    /* Seção de preços */
-    .pricing-section {
-      background: #1a3a5c;
-      padding: 40px 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .price-card {
-      background: #fff;
-      border: 3px solid #2980b9;
-      border-radius: 12px;
-      padding: 25px 20px;
-      width: 300px;
-      text-align: center;
-      position: relative;
-    }
-
-    .price-card.featured {
-      border-color: #2980b9;
-      transform: scale(1.03);
-    }
-
-    .badge {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #cc0000;
-      color: #fff;
-      padding: 4px 18px;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: 0 0 8px 8px;
-      white-space: nowrap;
-    }
-
-    .price-card h3 {
-      font-size: 28px;
-      font-weight: 900;
-      color: #1a3a5c;
-      margin-top: 20px;
-    }
-
-    .price-card .subtitle {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .price-card .product-img {
-      width: 180px;
-      height: 160px;
-      margin: 10px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .price-card .product-img img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .product-placeholder {
-      width: 180px;
-      height: 160px;
-      margin: 10px auto;
-      background: #e8f4f8;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #2980b9;
-      font-weight: 700;
-      font-size: 14px;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .installments {
-      font-size: 14px;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    .installments span {
-      display: inline;
-    }
-
-    .price {
-      font-size: 36px;
-      font-weight: 900;
-      color: #1a3a5c;
-    }
-
-    .price .currency {
-      font-size: 20px;
-      vertical-align: super;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 15px 0 10px;
-    }
-
-    .btn-buy {
-      display: block;
-      font-size: 14px;
-      font-weight: 900;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-decoration: none;
-      transition: background 0.2s;
-      text-align: center;
-    }
-
-    .btn-cartao {
-      background: #f4d03f;
-      color: #333;
-    }
-
-    .btn-cartao:hover {
-      background: #f1c40f;
-    }
-
-    .btn-pix {
-      background: #2ecc71;
-      color: #fff;
-    }
-
-    .btn-pix:hover {
-      background: #27ae60;
-    }
-
-    .total-price {
-      font-size: 14px;
-      color: #555;
-      margin: 5px 0;
-    }
-
-    .shipping {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 13px;
-      color: #555;
-      font-style: italic;
-      margin: 5px 0;
-    }
-
-    .guarantee-days {
-      font-size: 13px;
-      color: #555;
-      margin: 8px 0;
-    }
-
-    .payment-flags {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .payment-flags img {
-      height: 28px;
-    }
-
-    .flag {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 4px;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .flag-visa { background: #1a1f71; }
-    .flag-master { background: #eb001b; }
-    .flag-discover { background: #ff6000; }
-    .flag-amex { background: #006fcf; }
-
-    /* Garantia */
-    .guarantee-section {
-      background: #fdf8e8;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .guarantee-box {
-      max-width: 900px;
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      background: #fdf8e8;
-      border: 2px solid #e8dcc8;
-      border-radius: 12px;
-      padding: 30px;
-    }
-
-    .guarantee-img {
-      flex-shrink: 0;
-      width: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .guarantee-img-placeholder {
-      width: 200px;
-      height: 200px;
-      background: #f0e6cc;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #8b7a50;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 10px;
-    }
-
-    .guarantee-content h2 {
-      font-size: 26px;
-      font-weight: 900;
-      color: #333;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    .guarantee-content p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .guarantee-content strong {
-      color: #333;
-    }
-
-    /* CTA final */
-    .cta-section {
-      padding: 40px 20px;
-      text-align: center;
-      background: #fff;
-    }
-
-    .btn-cta {
-      display: inline-block;
-      background: #f4d03f;
-      color: #333;
-      font-size: 14px;
-      font-weight: 900;
-      padding: 14px 30px;
-      border: 2px solid #333;
-      border-radius: 6px;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .btn-cta:hover {
-      background: #f1c40f;
-    }
-
-    /* Referências */
-    .references-section {
-      padding: 30px 20px 50px;
-      text-align: center;
-      background: #fff;
-    }
-
-    .references-badge {
-      display: inline-block;
-      background: #2c5aa0;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 12px 40px;
-      border-radius: 30px;
-      margin-bottom: 25px;
-    }
-
-    .references-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .references-logos span {
-      font-size: 22px;
-      font-weight: 800;
-      color: #555;
-    }
-
-    .ref-globo { color: #e31e24; }
-    .ref-terra { color: #e35d22; }
-    .ref-cnn { color: #cc0000; background: #cc0000; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 16px; }
-    .ref-uol { color: #f5a623; }
-
-    /* Responsivo */
-    @media (max-width: 960px) {
-      .pricing-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .price-card.featured {
-        transform: none;
-        order: -1;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 22px;
-      }
-
-      .guarantee-box {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .price-card {
-        width: 100%;
-        max-width: 320px;
-      }
-
-      .guarantee-content h2 {
-        font-size: 20px;
-      }
-    }
-
-    /* Seção de Comentários estilo Facebook */
-    .fb-comments-wrapper {
-      background: #f0f2f5;
-      padding: 20px 0;
-    }
-
-    .fb-comments-section {
-      background: #fff;
-      padding: 16px 16px 8px;
-      max-width: 700px;
-      margin: 0 auto;
-      border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-
-    .fb-comments-header {
-      font-size: 14px;
-      font-weight: 700;
-      color: #65676b;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-family: Helvetica, Arial, sans-serif;
-    }
-
-    .fb-comments-header span {
-      font-weight: 400;
-      margin-left: 4px;
-    }
-
-    .fb-comment {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 16px;
-      position: relative;
-      font-family: Helvetica, Arial, sans-serif;
-    }
-
-    .fb-comment-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .fb-comment-body {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .fb-comment-bubble {
-      background: #fff;
-      border-radius: 18px;
-      padding: 8px 12px;
-      position: relative;
-    }
-
-    .fb-comment-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: #050505;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .fb-comment-name:hover {
-      text-decoration: underline;
-    }
-
-    .fb-comment-text {
-      font-size: 15px;
-      color: #050505;
-      line-height: 1.34;
-      word-wrap: break-word;
-    }
-
-    .fb-comment-actions {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin-top: 4px;
-      padding-left: 12px;
-      font-size: 12px;
-      color: #65676b;
-      font-weight: 700;
-    }
-
-    .fb-comment-actions a {
-      color: #65676b;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .fb-comment-actions a:hover {
-      text-decoration: underline;
-    }
-
-    .fb-comment-actions .fb-separator {
-      margin: 0 6px;
-      color: #65676b;
-    }
-
-    .fb-comment-actions .fb-time {
-      font-weight: 400;
-    }
-
-    .fb-comment-reactions {
-      position: absolute;
-      right: 0;
-      bottom: -4px;
-      display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      padding: 2px 6px 2px 2px;
-      gap: 0;
-    }
-
-    .fb-reaction-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      margin-left: -2px;
-    }
-
-    .fb-reaction-icon:first-child {
-      margin-left: 0;
-    }
-
-    .fb-reaction-like {
-      background: #1877f2;
-      color: #fff;
-    }
-
-    .fb-reaction-heart {
-      background: #f33e58;
-      color: #fff;
-    }
-
-    .fb-reaction-count {
-      font-size: 12px;
-      color: #65676b;
-      margin-left: 4px;
-    }
-
-    .fb-bubble-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Disclaimer / Footer */
-    .disclaimer-footer {
-      background: #1a1a1a;
-      color: #999;
-      padding: 40px 20px;
-      font-size: 12px;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    .disclaimer-footer p {
-      max-width: 900px;
-      margin: 0 auto 15px;
-    }
-
-    .disclaimer-footer .footer-links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .disclaimer-footer .footer-links a {
-      color: #ccc;
-      text-decoration: underline;
-      font-size: 12px;
-    }
-
-    .disclaimer-footer .footer-links a:hover {
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora Tpaiva T Paiva de Vasconcelos – Edição de Livros</title>
+    <meta name="description" content="Editora Tpaiva: publicamos livros de romance, fantasia, não-ficção, técnicos e infantojuvenis. Qualidade editorial, distribuição nacional e respeito ao autor. CNPJ 64.704.797/0001-90.">
+    <meta name="keywords" content="editora, publicar livro, livro, literatura, Tpaiva, edição, romance, fantasia, não-ficção, como publicar, editora brasileira, Vasconcelos">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Editora Tpaiva T Paiva de Vasconcelos Edição Livros",
+            "url": "https://www.editoratpaiva.com.br",
+            "logo": "https://via.placeholder.com/200x60/4A0E2E/C9A03D?text=Editora+Tpaiva",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Rua da Literatura, 123",
+                "addressLocality": "São Paulo",
+                "addressRegion": "SP",
+                "postalCode": "01234-567"
+            },
+            "contactPoint": { "@type": "ContactPoint", "telephone": "+5511999999999", "contactType": "editorial" },
+            "taxID": "64.704.797/0001-90"
+        }
+    </script>
+
+    <style>
+        :root {
+            --vinho: #4A0E2E;
+            --vinho-claro: #6B2E4A;
+            --dourado: #C9A03D;
+            --dourado-hover: #B88A2E;
+            --off-white: #FDFAF6;
+            --bege: #F3ECD8;
+            --cinza-escuro: #3A3A3A;
+            --cinza-medio: #5C5C5C;
+            --texto: #1C1C1C;
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 8px 30px rgba(0, 0, 0, 0.10);
+            --borda: 8px;
+            --transicao: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Inter', sans-serif;
+            --largura-max: 1280px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--fonte-corpo);
+            color: var(--cinza-escuro);
+            background-color: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 14px 0; transition: background var(--transicao), box-shadow var(--transicao), padding var(--transicao);
+            background: transparent;
+        }
+        .header.scrolled {
+            background: rgba(74, 14, 46, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 8px 0;
+        }
+        .header-inner {
+            max-width: var(--largura-max); margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 20px;
+        }
+        .logo-link { display: flex; align-items: center; text-decoration: none; gap: 10px; flex-shrink: 0; }
+        .logo-icon {
+            font-size: 2rem; color: var(--dourado); transition: transform var(--transicao);
+        }
+        .logo-link:hover .logo-icon { transform: rotate(-5deg) scale(1.08); }
+        .logo-text {
+            font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.25rem;
+            color: #fff; letter-spacing: -0.3px; line-height: 1.2;
+        }
+        .header.scrolled .logo-text { color: var(--dourado); }
+        .logo-text small {
+            display: block; font-family: var(--fonte-corpo); font-weight: 400; font-size: 0.6rem;
+            color: #ddd; letter-spacing: 0.5px;
+        }
+        .nav-links { display: flex; list-style: none; gap: 8px; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: #fff; font-weight: 500; font-size: 0.9rem;
+            padding: 8px 14px; border-radius: 20px; position: relative; transition: color var(--transicao);
+        }
+        .header.scrolled .nav-links a { color: #eee; }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%) scaleX(0);
+            width: 60%; height: 2px; background: var(--dourado); border-radius: 2px;
+            transition: transform var(--transicao);
+        }
+        .nav-links a:hover, .nav-links a:focus-visible { color: var(--dourado); }
+        .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: translateX(-50%) scaleX(1); }
+        .btn-cta-header {
+            display: inline-flex; align-items: center; gap: 6px; background: var(--dourado);
+            color: var(--vinho); padding: 10px 22px; border-radius: 24px; text-decoration: none;
+            font-weight: 700; font-size: 0.9rem; transition: all var(--transicao); box-shadow: 0 4px 16px rgba(201,160,61,0.35);
+            white-space: nowrap; font-family: var(--fonte-corpo);
+        }
+        .btn-cta-header:hover { background: #D4AC4A; transform: scale(1.05); box-shadow: 0 8px 24px rgba(201,160,61,0.5); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; background: none; border: none; }
+        .hamburger span { width: 26px; height: 3px; background: #fff; border-radius: 3px; transition: var(--transicao); }
+        .header.scrolled .hamburger span { background: var(--dourado); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-6px); }
+
+        .mobile-menu {
+            position: fixed; inset: 0; background: rgba(74,14,46,0.97); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 24px; transform: translateX(100%); transition: transform 0.45s ease;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: #fff; text-decoration: none; transition: color var(--transicao); }
+        .mobile-menu a:hover { color: var(--dourado); }
+        .mobile-menu .btn-cta-header { font-size: 1.1rem; padding: 14px 28px; margin-top: 10px; }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative; height: 100vh; min-height: 600px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            background: url('https://images.unsplash.com/photo-1509021434642-86c06e53b7b3?w=1600&q=80') center/cover no-repeat;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74,14,46,0.8) 0%, rgba(74,14,46,0.35) 60%, rgba(253,250,246,0.1) 100%);
+            z-index: 2;
+        }
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 800px; padding: 0 24px; margin-top: 20px; }
+        .hero-content h1 {
+            font-family: var(--fonte-titulo); font-size: clamp(2.2rem, 5vw, 4rem); color: #fff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3); line-height: 1.2; margin-bottom: 20px;
+        }
+        .hero-content p { font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 30px; }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .btn-hero {
+            padding: 14px 32px; border-radius: 30px; font-weight: 700; font-size: 1rem; text-decoration: none;
+            transition: all var(--transicao); display: inline-block;
+        }
+        .btn-hero-primary { background: var(--dourado); color: var(--vinho); box-shadow: 0 6px 20px rgba(201,160,61,0.4); }
+        .btn-hero-primary:hover { background: #D4AC4A; transform: translateY(-3px); }
+        .btn-hero-secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(4px); }
+        .btn-hero-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+
+        /* ============ FAIXA CONFIANÇA ============ */
+        .faixa-confianca { background: var(--off-white); padding: 40px 24px; position: relative; z-index: 10; margin-top: -40px; border-radius: 24px 24px 0 0; }
+        .faixa-inner { max-width: var(--largura-max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .faixa-card { background: #fff; border-radius: var(--borda); padding: 24px; text-align: center; box-shadow: var(--sombra-suave); transition: transform var(--transicao), box-shadow var(--transicao); }
+        .faixa-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-media); }
+        .faixa-icon { font-size: 2.2rem; color: var(--dourado); margin-bottom: 12px; }
+        .faixa-card h3 { font-family: var(--fonte-titulo); color: var(--vinho); font-size: 1.1rem; margin-bottom: 6px; }
+        .faixa-card p { font-size: 0.85rem; color: var(--cinza-medio); }
+
+        /* ============ SEÇÕES ============ */
+        .section { padding: 80px 24px; }
+        .section-inner { max-width: var(--largura-max); margin: 0 auto; }
+        .section-titulo { text-align: center; margin-bottom: 50px; }
+        .section-titulo h2 { font-family: var(--fonte-titulo); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--vinho); margin-bottom: 10px; }
+        .section-titulo p { font-size: 1rem; color: var(--cinza-medio); max-width: 600px; margin: 0 auto; }
+
+        /* ============ SOBRE ============ */
+        .sobre-section { background: var(--bege); }
+        .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .sobre-img img { width: 100%; border-radius: 12px; box-shadow: var(--sombra-media); }
+        .sobre-texto h2 { font-family: var(--fonte-titulo); font-size: 2rem; color: var(--vinho); margin-bottom: 16px; }
+        .sobre-texto p { margin-bottom: 16px; line-height: 1.8; }
+        .sobre-valores { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 20px; }
+        .sv-card { background: #fff; border-radius: 8px; padding: 18px; text-align: center; box-shadow: var(--sombra-suave); transition: var(--transicao); border-top: 3px solid transparent; }
+        .sv-card:hover { border-top-color: var(--dourado); transform: translateY(-4px); }
+        .sv-card .sv-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .sv-card h4 { font-family: var(--fonte-titulo); color: var(--vinho); margin-bottom: 4px; }
+        .sv-card p { font-size: 0.8rem; color: var(--cinza-medio); margin: 0; }
+
+        /* ============ CATÁLOGO ============ */
+        .catalogo-section { background: var(--off-white); }
+        .catalogo-filtros { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+        .catalogo-filtros button {
+            background: #fff; border: 1px solid #ddd; padding: 10px 20px; border-radius: 24px;
+            font-weight: 500; font-size: 0.85rem; cursor: pointer; transition: all var(--transicao);
+            color: var(--cinza-escuro); font-family: var(--fonte-corpo);
+        }
+        .catalogo-filtros button.active, .catalogo-filtros button:hover {
+            background: var(--vinho); color: #fff; border-color: var(--vinho);
+        }
+        .livros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .livro-card {
+            background: #fff; border-radius: 8px; overflow: hidden; box-shadow: var(--sombra-suave);
+            transition: all var(--transicao); position: relative; display: flex; flex-direction: column;
+        }
+        .livro-card:hover { transform: translateY(-5px); box-shadow: var(--sombra-media); }
+        .livro-img { height: 280px; overflow: hidden; background: #f4f4f4; display: flex; align-items: center; justify-content: center; }
+        .livro-img img { width: 80%; height: auto; max-height: 90%; object-fit: contain; transition: transform 0.4s ease; }
+        .livro-card:hover .livro-img img { transform: scale(1.08); }
+        .livro-badge { position: absolute; top: 10px; left: 10px; background: var(--dourado); color: var(--vinho); padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; z-index: 2; }
+        .livro-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .livro-body h4 { font-family: var(--fonte-titulo); font-weight: 700; font-size: 1rem; color: var(--vinho); margin-bottom: 4px; }
+        .livro-body .autor { font-size: 0.8rem; color: var(--cinza-medio); margin-bottom: 8px; }
+        .livro-body .genero { display: inline-block; background: var(--vinho); color: #fff; padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; margin-bottom: 8px; }
+        .livro-body .btn-detalhes {
+            display: inline-block; background: var(--dourado); color: var(--vinho); padding: 8px 16px;
+            border-radius: 18px; text-decoration: none; font-weight: 600; font-size: 0.8rem;
+            transition: all var(--transicao); margin-top: auto; text-align: center;
+        }
+        .livro-body .btn-detalhes:hover { background: #D4AC4A; }
+
+        /* ============ COMO PUBLICAR ============ */
+        .publicar-section { background: var(--bege); }
+        .passos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+        .passo-card { background: #fff; border-radius: 12px; padding: 28px 20px; text-align: center; box-shadow: var(--sombra-suave); transition: var(--transicao); }
+        .passo-card:hover { transform: translateY(-6px); }
+        .passo-numero { font-family: var(--fonte-titulo); font-size: 2.5rem; color: var(--dourado); font-weight: 900; }
+        .passo-card h4 { color: var(--vinho); margin: 10px 0; }
+
+        /* ============ BLOG ============ */
+        .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .blog-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: var(--sombra-suave); transition: var(--transicao); }
+        .blog-card:hover { transform: translateY(-4px); }
+        .blog-img { height: 180px; overflow: hidden; }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .blog-card:hover .blog-img img { transform: scale(1.05); }
+        .blog-body { padding: 16px; }
+        .blog-body h4 { font-family: var(--fonte-titulo); color: var(--vinho); margin-bottom: 6px; }
+        .blog-body p { font-size: 0.85rem; color: var(--cinza-medio); }
+
+        /* ============ DEPOIMENTOS ============ */
+        .depoimentos-section { background: var(--vinho); color: #fff; }
+        .depoimentos-carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
+        .depo-card { min-width: 300px; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; scroll-snap-align: start; backdrop-filter: blur(4px); }
+        .depo-card .estrelas { color: var(--dourado); font-size: 1rem; margin-bottom: 8px; }
+        .depo-card p { font-style: italic; margin-bottom: 12px; }
+        .depo-card .autor { font-weight: 600; color: var(--dourado); }
+
+        /* ============ EQUIPE ============ */
+        .equipe-grid { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+        .equipe-card { text-align: center; }
+        .equipe-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--dourado); }
+
+        /* ============ FAQ ============ */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 8px; margin-bottom: 10px; box-shadow: var(--sombra-suave); }
+        .faq-q { width: 100%; background: none; border: none; padding: 18px 20px; text-align: left; font-weight: 600; color: var(--vinho); cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 20px; color: var(--cinza-medio); }
+        .faq-item.active .faq-a { max-height: 200px; padding: 0 20px 18px; }
+
+        /* ============ CTA FINAL ============ */
+        .cta-final { background: var(--vinho); text-align: center; color: #fff; }
+        .cta-final h2 { font-family: var(--fonte-titulo); color: var(--dourado); }
+
+        /* ============ FOOTER ============ */
+        .footer { background: #1C1C1C; color: #ccc; padding: 50px 24px 20px; }
+        .footer-inner { max-width: var(--largura-max); margin: 0 auto; display: grid; grid-template-columns: repeat(5,1fr); gap: 28px; }
+        .footer-col h4 { color: #fff; font-family: var(--fonte-titulo); margin-bottom: 14px; }
+        .footer-col a, .footer-col li { color: #aaa; text-decoration: none; list-style: none; line-height: 2; font-size: 0.85rem; }
+        .footer-col a:hover { color: var(--dourado); }
+        .footer-redes a { font-size: 1.4rem; margin-right: 12px; color: #aaa; }
+        .footer-redes a:hover { color: var(--dourado); }
+        .footer-bottom { text-align: center; margin-top: 30px; border-top: 1px solid #333; padding-top: 18px; font-size: 0.8rem; color: #777; }
+
+        @media (max-width: 1024px) {
+            .livros-grid { grid-template-columns: repeat(3,1fr); }
+            .footer-inner { grid-template-columns: repeat(3,1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; } .hamburger { display: flex; }
+            .sobre-grid, .passos-grid, .blog-grid { grid-template-columns: 1fr; }
+            .livros-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-inner { grid-template-columns: repeat(2,1fr); }
+            .faixa-inner { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .livros-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .catalogo-filtros button { padding: 8px 14px; font-size: 0.75rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <h1>SA&Uacute;DE</h1>
-    <div class="menu-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
-
-  <!-- Banner de urgência -->
-  <div class="urgency-banner">
-    Apresenta&ccedil;&atilde;o dispon&iacute;vel somente at&eacute;: <strong id="deadline-date">quarta, 04/03/2026</strong>
-  </div>
-
-  <!-- Vídeo -->
-  <section class="video-section">
-    <div class="video-wrapper">
-      <vturb-smartplayer id="vid-69a35d0a39c8b3b88468d00c" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
-      <script type="text/javascript">
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/88c2dd25-2774-43f4-a038-f2a84bb4bd89/players/69a35d0a39c8b3b88468d00c/v4/player.js",
-        s.async=!0,document.head.appendChild(s);
-      </script>
-    </div>
-    <div class="sound-notice">
-      <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-        <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/>
-      </svg>
-      Por favor, verifique se o som est&aacute; ligado.
-    </div>
-  </section>
-
-  <!-- Preços -->
-  <section class="pricing-section" id="kits">
-
-    <!-- 10 Frascos -->
-    <div class="price-card featured">
-      <div class="badge">Mais vendido</div>
-      <h3>10 Frascos</h3>
-      <p class="subtitle">Suficiente para 10 meses</p>
-      <div class="product-img">
-        <img src="t10 frasco.png" alt="10 Frascos LordVigor">
-      </div>
-      <div class="installments">
-        12x de <span class="price"><span class="currency">R$</span> 72,09</span>
-      </div>
-      <div class="btn-group">
-        <a href="https://checkout.payt.com.br/fd50cabb132077c1993b8d09a7e93f99?split=12" class="btn-buy btn-cartao">COMPRAR AGORA VIA CART&Atilde;O DE CR&Eacute;DITO</a>
-        <a href="https://checkout.payt.com.br/fd50cabb132077c1993b8d09a7e93f99?payment=pix" class="btn-buy btn-pix">COMPRAR AGORA VIA PIX</a>
-      </div>
-      <p class="total-price">Total: R$ 697,00</p>
-      <p class="shipping"><span>&#128666;</span> Frete Gr&aacute;tis</p>
-      <p class="guarantee-days">Garantia de 600 dias</p>
-      <div class="payment-flags">
-        <img src="bandeiras-cartao.webp" alt="Bandeiras de cart&atilde;o">
-      </div>
-    </div>
-
-    <!-- 5 Frascos -->
-    <div class="price-card">
-      <h3>5 Frascos</h3>
-      <p class="subtitle">Suficiente para 5 meses</p>
-      <div class="product-img">
-        <img src="t5 frasco.png" alt="5 Frascos LordVigor">
-      </div>
-      <div class="installments">
-        12x de <span class="price"><span class="currency">R$</span> 41,06</span>
-      </div>
-      <div class="btn-group">
-        <a href="https://checkout.payt.com.br/301663af69e4461de3abb7ab4f9409d7?split=12" class="btn-buy btn-cartao">COMPRAR AGORA VIA CART&Atilde;O DE CR&Eacute;DITO</a>
-        <a href="https://checkout.payt.com.br/301663af69e4461de3abb7ab4f9409d7?payment=pix" class="btn-buy btn-pix">COMPRAR AGORA VIA PIX</a>
-      </div>
-      <p class="total-price">Total: R$ 397,00</p>
-      <p class="shipping"><span>&#128666;</span> Frete Gr&aacute;tis</p>
-      <p class="guarantee-days">Garantia de 300 dias</p>
-      <div class="payment-flags">
-        <img src="bandeiras-cartao.webp" alt="Bandeiras de cart&atilde;o">
-      </div>
-    </div>
-
-    <!-- 3 Frascos -->
-    <div class="price-card">
-      <h3>3 Frascos</h3>
-      <p class="subtitle">Suficiente para 3 meses</p>
-      <div class="product-img">
-        <img src="t3 frasco.png" alt="3 Frascos LordVigor">
-      </div>
-      <div class="installments">
-        5x de <span class="price"><span class="currency">R$</span> 65,76</span>
-      </div>
-      <div class="btn-group">
-        <a href="https://checkout.payt.com.br/6f5ead1f4256eac39bff7abb00c6f238?split=5" class="btn-buy btn-cartao">COMPRAR AGORA VIA CART&Atilde;O DE CR&Eacute;DITO</a>
-        <a href="https://checkout.payt.com.br/6f5ead1f4256eac39bff7abb00c6f238?payment=pix" class="btn-buy btn-pix">COMPRAR AGORA VIA PIX</a>
-      </div>
-      <p class="total-price">Total: R$ 297,00</p>
-      <p class="shipping"><span>&#128666;</span> Frete Gr&aacute;tis</p>
-      <p class="guarantee-days">Garantia de 180 dias</p>
-      <div class="payment-flags">
-        <img src="bandeiras-cartao.webp" alt="Bandeiras de cart&atilde;o">
-      </div>
-    </div>
-
-    <!-- 1 Frasco -->
-    <div class="price-card">
-      <h3>1 Frasco</h3>
-      <p class="subtitle">Suficiente para 1 m&ecirc;s</p>
-      <div class="product-img">
-        <img src="t1 frasco.png" alt="1 Frasco LordVigor">
-      </div>
-      <div class="installments">
-        <span class="price"><span class="currency">R$</span> 197,00</span>
-      </div>
-      <div class="btn-group">
-        <a href="https://checkout.payt.com.br/5e94fac6e972b0c182a1692872bc1281?split=12" class="btn-buy btn-cartao">COMPRAR AGORA VIA CART&Atilde;O DE CR&Eacute;DITO</a>
-        <a href="https://checkout.payt.com.br/5e94fac6e972b0c182a1692872bc1281?payment=pix" class="btn-buy btn-pix">COMPRAR AGORA VIA PIX</a>
-      </div>
-      <p class="total-price">Total: R$ 197,00</p>
-      <p class="shipping"><span>&#128666;</span> Frete Gr&aacute;tis</p>
-      <p class="guarantee-days">Garantia de 60 dias</p>
-      <div class="payment-flags">
-        <img src="bandeiras-cartao.webp" alt="Bandeiras de cart&atilde;o">
-      </div>
-    </div>
-
-  </section>
-
-  <!-- Garantia -->
-  <section class="guarantee-section">
-    <div class="guarantee-box">
-      <div class="guarantee-img">
-        <img src="garantia blindada.png" alt="Garantia Blindada LordVigor" style="max-width: 100%; height: auto;">
-      </div>
-      <div class="guarantee-content">
-        <h2>GARANTIA BLINDADA LORDVIGOR</h2>
-        <p>Quando voc&ecirc; pedir o LordVigor, tamb&eacute;m receber&aacute; uma <strong>garantia blindada de 60 dias em cada frasco</strong> para solicitar todo o seu dinheiro de volta.</p>
-        <p>Estamos t&atilde;o confiantes que o LordVigor vai te trazer resultados, que se voc&ecirc; n&atilde;o estiver 100% satisfeito e n&atilde;o notar uma grande melhora na sua qualidade de vida, <strong>n&oacute;s vamos te devolver at&eacute; o &uacute;ltimo centavo pago.</strong></p>
-        <p>Basta enviar um e-mail para sac@lordvigor.com.br em at&eacute; 60 dias a partir da sua compra que faremos a devolu&ccedil;&atilde;o integral do seu dinheiro, <strong>sem qualquer questionamento!</strong></p>
-        <p>Por isso, fa&ccedil;a seu pedido agora. Voc&ecirc; n&atilde;o tem absolutamente NADA a perder, e tudo a ganhar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <a href="#kits" class="btn-cta">ESCOLHER MEU KIT</a>
-  </section>
-
-  <!-- Referências Científicas -->
-  <section class="references-section">
-    <div class="references-badge">Refer&ecirc;ncias Cient&iacute;ficas</div>
-    <img src="referencias-cientificas.png" alt="Refer&ecirc;ncias Cient&iacute;ficas" style="max-width: 100%; height: auto;">
-  </section>
-
-  <!-- Comentários estilo Facebook -->
-  <div class="fb-comments-wrapper">
-  <section class="fb-comments-section">
-    <div class="fb-comments-header">448 COMENTÁRIOS <span>– EXIBINDO OS 23 MAIS RELEVANTES</span></div>
-
-    <!-- Comentário 1 -->
-    <div class="fb-comment">
-      <img class="fb-comment-avatar" src="HOMEM 1.jpg" alt="Eduardo Coelhor">
-      <div class="fb-comment-body">
-        <div class="fb-bubble-wrapper">
-          <div class="fb-comment-bubble">
-            <a class="fb-comment-name" href="#">Eduardo Coelhor</a>
-            <div class="fb-comment-text">Ainda bem que eu vi o vídeo até o final. Fico feliz demais Muito obrigado Dra. por ter descoberto, fiz o teste e em dois dias já voltei duro, azulzinho nunca mais!.</div>
-          </div>
-          <div class="fb-comment-reactions">
-            <span class="fb-reaction-icon fb-reaction-like"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M16 8A8 8 0 110 8a8 8 0 0116 0zM6.5 12.5h3c.3 0 .5-.2.6-.5l1.4-3.3V5h-4.4l.7-3.2v-.2c0-.2-.1-.4-.2-.5L7.1 .5 3.3 4.3c-.2.2-.3.4-.3.7v6c0 .8.7 1.5 1.5 1.5z"/></svg></span>
-            <span class="fb-reaction-icon fb-reaction-heart"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M8 15s-6.8-5.5-6.8-9.2C1.2 3.1 3.3 1 5.8 1 7 1 8 1.6 8 1.6S9 1 10.2 1c2.5 0 4.6 2.1 4.6 4.8C14.8 9.5 8 15 8 15z"/></svg></span>
-            <span class="fb-reaction-count">38</span>
-          </div>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo-link"><span class="logo-icon">📖</span><span class="logo-text">Editora Tpaiva<small>T Paiva de Vasconcelos</small></span></a>
+            <nav><ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#publicar">Publicar</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul></nav>
+            <a href="#contato" class="btn-cta-header">Publicar Conosco</a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
         </div>
-        <div class="fb-comment-actions">
-          <a href="#">Curtir</a>
-          <span class="fb-separator">·</span>
-          <a href="#">Responder</a>
-          <span class="fb-separator">·</span>
-          <span class="fb-time">21 min</span>
-        </div>
-      </div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a>
+        <a href="#publicar">Publicar</a><a href="#blog">Blog</a><a href="#contato">Contato</a>
+        <a href="#contato" class="btn-cta-header">Publicar Conosco</a>
     </div>
 
-    <!-- Comentário 2 -->
-    <div class="fb-comment">
-      <img class="fb-comment-avatar" src="HOMEM 2.jpg" alt="Roberto Belmonte">
-      <div class="fb-comment-body">
-        <div class="fb-bubble-wrapper">
-          <div class="fb-comment-bubble">
-            <a class="fb-comment-name" href="#">Roberto Belmonte</a>
-            <div class="fb-comment-text">O negócio funciona moço</div>
-          </div>
-          <div class="fb-comment-reactions">
-            <span class="fb-reaction-icon fb-reaction-like"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M16 8A8 8 0 110 8a8 8 0 0116 0zM6.5 12.5h3c.3 0 .5-.2.6-.5l1.4-3.3V5h-4.4l.7-3.2v-.2c0-.2-.1-.4-.2-.5L7.1 .5 3.3 4.3c-.2.2-.3.4-.3.7v6c0 .8.7 1.5 1.5 1.5z"/></svg></span>
-            <span class="fb-reaction-icon fb-reaction-heart"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M8 15s-6.8-5.5-6.8-9.2C1.2 3.1 3.3 1 5.8 1 7 1 8 1.6 8 1.6S9 1 10.2 1c2.5 0 4.6 2.1 4.6 4.8C14.8 9.5 8 15 8 15z"/></svg></span>
-            <span class="fb-reaction-count">7</span>
-          </div>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Onde as palavras ganham vida</h1>
+            <p>Da ficção ao manual técnico, publicamos obras que marcam gerações. Conheça nosso catálogo.</p>
+            <div class="hero-buttons">
+                <a href="#catalogo" class="btn-hero btn-hero-primary">Explorar Catálogo</a>
+                <a href="#publicar" class="btn-hero btn-hero-secondary">Publicar seu Livro</a>
+            </div>
         </div>
-        <div class="fb-comment-actions">
-          <a href="#">Curtir</a>
-          <span class="fb-separator">·</span>
-          <a href="#">Responder</a>
-          <span class="fb-separator">·</span>
-          <span class="fb-time">1 min</span>
+    </section>
+
+    <!-- FAIXA CONFIANÇA -->
+    <section class="faixa-confianca" data-aos="fade-up">
+        <div class="faixa-inner">
+            <div class="faixa-card"><div class="faixa-icon">📚</div><h3>+500 títulos publicados</h3><p>Acervo diverso e consolidado.</p></div>
+            <div class="faixa-card"><div class="faixa-icon">🏆</div><h3>Prêmios literários</h3><p>Qualidade reconhecida pela crítica.</p></div>
+            <div class="faixa-card"><div class="faixa-icon">✍️</div><h3>Autores renomados</h3><p>Curadoria editorial de excelência.</p></div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Comentário 3 -->
-    <div class="fb-comment">
-      <img class="fb-comment-avatar" src="HOMEM 3.jpg" alt="Pedro Paulo">
-      <div class="fb-comment-body">
-        <div class="fb-bubble-wrapper">
-          <div class="fb-comment-bubble">
-            <a class="fb-comment-name" href="#">Pedro Paulo</a>
-            <div class="fb-comment-text">No início eu duvidava muito, até porque já tinha tentado de tudo antes Mas mesmo assim resolvi dar uma chance e fiquei impressionado!</div>
-          </div>
-          <div class="fb-comment-reactions">
-            <span class="fb-reaction-icon fb-reaction-like"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M16 8A8 8 0 110 8a8 8 0 0116 0zM6.5 12.5h3c.3 0 .5-.2.6-.5l1.4-3.3V5h-4.4l.7-3.2v-.2c0-.2-.1-.4-.2-.5L7.1 .5 3.3 4.3c-.2.2-.3.4-.3.7v6c0 .8.7 1.5 1.5 1.5z"/></svg></span>
-            <span class="fb-reaction-icon fb-reaction-heart"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M8 15s-6.8-5.5-6.8-9.2C1.2 3.1 3.3 1 5.8 1 7 1 8 1.6 8 1.6S9 1 10.2 1c2.5 0 4.6 2.1 4.6 4.8C14.8 9.5 8 15 8 15z"/></svg></span>
-            <span class="fb-reaction-count">219</span>
-          </div>
+    <!-- SOBRE -->
+    <section class="section sobre-section" id="sobre">
+        <div class="section-inner sobre-grid">
+            <div class="sobre-img" data-aos="fade-right"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=700&q=80" alt="Ambiente editorial"></div>
+            <div class="sobre-texto" data-aos="fade-left">
+                <h2>Editora Tpaiva T Paiva de Vasconcelos</h2>
+                <p>Nascida do amor pela palavra escrita, atuamos em todos os gêneros: romance, fantasia, não-ficção, técnicos e infantojuvenis. Nossa missão é transformar originais em obras-primas, com transparência e qualidade gráfica. CNPJ 64.704.797/0001-90, uma empresa sólida no mercado editorial brasileiro.</p>
+                <div class="sobre-valores">
+                    <div class="sv-card"><div class="sv-icon">🪶</div><h4>Missão</h4><p>Publicar obras que emocionam e ensinam.</p></div>
+                    <div class="sv-card"><div class="sv-icon">⭐</div><h4>Visão</h4><p>Ser referência em edição de qualidade.</p></div>
+                    <div class="sv-card"><div class="sv-icon">❤️</div><h4>Valores</h4><p>Respeito ao autor e ao leitor.</p></div>
+                </div>
+            </div>
         </div>
-        <div class="fb-comment-actions">
-          <a href="#">Curtir</a>
-          <span class="fb-separator">·</span>
-          <a href="#">Responder</a>
-          <span class="fb-separator">·</span>
-          <span class="fb-time">3 hr</span>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="section catalogo-section" id="catalogo">
+        <div class="section-inner">
+            <div class="section-titulo"><h2>Nosso Catálogo</h2><p>De clássicos a contemporâneos.</p></div>
+            <div class="catalogo-filtros">
+                <button class="active" data-filter="todos">Todos</button>
+                <button data-filter="romance">Romance</button>
+                <button data-filter="fantasia">Fantasia & FC</button>
+                <button data-filter="naoficcao">Não-Ficção</button>
+                <button data-filter="tecnicos">Técnicos</button>
+                <button data-filter="infantil">Infantojuvenil</button>
+            </div>
+            <div class="livros-grid" id="livrosGrid"></div>
+            <div style="text-align:center; margin-top:30px;"><a href="#" class="btn-hero btn-hero-primary">Ver Catálogo Completo</a></div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Comentário 4 -->
-    <div class="fb-comment">
-      <img class="fb-comment-avatar" src="homem 44.jpg" alt="Lucas Almeida">
-      <div class="fb-comment-body">
-        <div class="fb-bubble-wrapper">
-          <div class="fb-comment-bubble">
-            <a class="fb-comment-name" href="#">Lucas Almeida</a>
-            <div class="fb-comment-text">Tava querendo saber se funcionava de verdade e agora vendo todos esses comentários positivos, já sei a resposta. Mto obg gente!!</div>
-          </div>
-          <div class="fb-comment-reactions">
-            <span class="fb-reaction-icon fb-reaction-like"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M16 8A8 8 0 110 8a8 8 0 0116 0zM6.5 12.5h3c.3 0 .5-.2.6-.5l1.4-3.3V5h-4.4l.7-3.2v-.2c0-.2-.1-.4-.2-.5L7.1 .5 3.3 4.3c-.2.2-.3.4-.3.7v6c0 .8.7 1.5 1.5 1.5z"/></svg></span>
-            <span class="fb-reaction-icon fb-reaction-heart"><svg width="12" height="12" viewBox="0 0 16 16" fill="white"><path d="M8 15s-6.8-5.5-6.8-9.2C1.2 3.1 3.3 1 5.8 1 7 1 8 1.6 8 1.6S9 1 10.2 1c2.5 0 4.6 2.1 4.6 4.8C14.8 9.5 8 15 8 15z"/></svg></span>
-            <span class="fb-reaction-count">24</span>
-          </div>
+    <!-- COMO PUBLICAR -->
+    <section class="section publicar-section" id="publicar">
+        <div class="section-inner">
+            <div class="section-titulo"><h2>Quer publicar seu livro conosco?</h2></div>
+            <div class="passos-grid">
+                <div class="passo-card" data-aos="fade-up"><div class="passo-numero">1</div><h4>Envie seu original</h4><p>Formato digital ou físico com sinopse.</p></div>
+                <div class="passo-card" data-aos="fade-up"><div class="passo-numero">2</div><h4>Análise editorial</h4><p>Avaliamos em até 30 dias.</p></div>
+                <div class="passo-card" data-aos="fade-up"><div class="passo-numero">3</div><h4>Publicação e distribuição</h4><p>ISBN, livrarias e e-book.</p></div>
+            </div>
+            <div style="text-align:center; margin-top:40px;"><a href="#contato" class="btn-hero btn-hero-primary">Enviar Proposta</a></div>
         </div>
-        <div class="fb-comment-actions">
-          <a href="#">Curtir</a>
-          <span class="fb-separator">·</span>
-          <a href="#">Responder</a>
-          <span class="fb-separator">·</span>
-          <span class="fb-time">51 min</span>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+        <div class="section-inner">
+            <div class="section-titulo"><h2>Blog da Editora</h2><p>Dicas de escrita, resenhas e novidades.</p></div>
+            <div class="blog-grid">
+                <div class="blog-card"><div class="blog-img"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80" alt=""></div><div class="blog-body"><h4>Como preparar um original</h4><p>Dicas práticas para autores iniciantes.</p></div></div>
+                <div class="blog-card"><div class="blog-img"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80" alt=""></div><div class="blog-body"><h4>Os livros mais vendidos de 2026</h4><p>Veja o ranking da nossa editora.</p></div></div>
+                <div class="blog-card"><div class="blog-img"><img src="https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=400&q=80" alt=""></div><div class="blog-body"><h4>Publicação independente x editora</h4><p>Qual o melhor caminho?</p></div></div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-  </section>
-  </div>
+    <!-- DEPOIMENTOS -->
+    <section class="section depoimentos-section">
+        <div class="section-inner">
+            <div class="section-titulo"><h2 style="color:#fff;">Autores que confiam</h2></div>
+            <div class="depoimentos-carousel">
+                <div class="depo-card"><div class="estrelas">★★★★★</div><p>"Acreditaram no meu manuscrito quando ninguém mais acreditou."</p><div class="autor">— João Silva, autor de "O Último Capítulo"</div></div>
+                <div class="depo-card"><div class="estrelas">★★★★★</div><p>"Profissionalismo e respeito ao texto. Minha obra ganhou o mundo."</p><div class="autor">— Maria Fernanda, autora de "Corações em Fúria"</div></div>
+                <div class="depo-card"><div class="estrelas">★★★★★</div><p>"Do original à gráfica, tudo impecável."</p><div class="autor">— Carlos Eduardo, livro técnico</div></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Disclaimer -->
-  <footer class="disclaimer-footer">
-    <p>2026 Copyright &copy;. Todos os direitos reservados. Todo o conte&uacute;do deste site, incluindo fotos, imagens, logotipos, marcas e layout, &eacute; de propriedade exclusiva do LordVigor e protegido por leis de direitos autorais e propriedade intelectual. A reprodu&ccedil;&atilde;o, modifica&ccedil;&atilde;o ou distribui&ccedil;&atilde;o sem autoriza&ccedil;&atilde;o expressa &eacute; proibida.</p>
-    <p>A inclus&atilde;o de qualquer conte&uacute;do ou link neste site n&atilde;o implica endosso, garantia, patroc&iacute;nio ou recomenda&ccedil;&atilde;o por parte do LordVigor.</p>
-    <p>As informa&ccedil;&otilde;es apresentadas neste site n&atilde;o constituem aconselhamento m&eacute;dico e n&atilde;o substituem diagn&oacute;sticos realizados por um profissional de sa&uacute;de. Este produto &eacute; um suplemento alimentar de uso amplo e n&atilde;o deve ser utilizado como substituto para tratamentos m&eacute;dicos. Sempre consulte um profissional de sa&uacute;de antes de iniciar o uso.</p>
-    <p>Este produto n&atilde;o tem inten&ccedil;&atilde;o de dar diagn&oacute;sticos, curas ou prevenir doen&ccedil;as, e n&atilde;o &eacute; um medicamento, mas sim um suplemento alimentar de uso amplo. Resultados podem variar de pessoa para pessoa e dependem de diversos fatores individuais.</p>
-    <p>Depoimentos, estudos de caso e exemplos encontrados nesta p&aacute;gina s&atilde;o resultados que nos foram encaminhados por usu&aacute;rios, e podem n&atilde;o refletir a experi&ecirc;ncia do comprador t&iacute;pico, podem n&atilde;o se aplicar a uma pessoa comum e n&atilde;o pretendem representar ou garantir que qualquer pessoa alcan&ccedil;ar&aacute; os mesmos resultados ou resultados semelhantes. Alguns nomes e informa&ccedil;&otilde;es de identifica&ccedil;&atilde;o pessoal neste site foram alterados para proteger a privacidade dos indiv&iacute;duos.</p>
-    <p>O conte&uacute;do deste v&iacute;deo foi criado exclusivamente para fins publicit&aacute;rios. Todos os personagens e situa&ccedil;&otilde;es apresentadas s&atilde;o interpretados por atores profissionais e n&atilde;o representam pessoas reais. Qualquer semelhan&ccedil;a com eventos, locais ou indiv&iacute;duos reais &eacute; mera coincid&ecirc;ncia. As opini&otilde;es, atitudes e comportamentos exibidos neste v&iacute;deo s&atilde;o fict&iacute;cios e n&atilde;o refletem necessariamente as opini&otilde;es ou pol&iacute;ticas da empresa respons&aacute;vel pela produ&ccedil;&atilde;o do v&iacute;deo. Este v&iacute;deo &eacute; interpretado por atores com a exclusiva inten&ccedil;&atilde;o de material publicit&aacute;rio.</p>
-    <p>Esse disclaimer abrangente deixa claro tanto a natureza fict&iacute;cia e publicit&aacute;ria do v&iacute;deo quanto as importantes informa&ccedil;&otilde;es de sa&uacute;de e recomenda&ccedil;&otilde;es associadas aos produtos apresentados.</p>
-    <p>Para acessar os estudos cient&iacute;ficos, <a href="#" style="color: #ccc; text-decoration: underline;">clique aqui</a>. Caso n&atilde;o consiga atrav&eacute;s do link, entre em contato com nosso suporte.</p>
-    <div class="footer-links">
-      <a href="politica-privacidade.html">Pol&iacute;tica de Privacidade</a>
-      <a href="termos-uso.html">Termos de Uso</a>
-      <a href="politica-reembolso.html">Pol&iacute;tica de Envio e Estorno</a>
-      <a href="aviso-legal.html">Aviso Legal</a>
-    </div>
-  </footer>
+    <!-- EQUIPE -->
+    <section class="section" id="equipe">
+        <div class="section-inner">
+            <div class="section-titulo"><h2>Nossa Equipe</h2></div>
+            <div class="equipe-grid">
+                <div class="equipe-card"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="Fundador"><h4>T. Paiva de Vasconcelos</h4><p>Editor-Chefe</p></div>
+                <div class="equipe-card"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Revisora"><h4>Ana Luiza</h4><p>Revisão</p></div>
+                <div class="equipe-card"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Designer"><h4>Ricardo</h4><p>Design Gráfico</p></div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Atualiza a data do banner dinamicamente
-    (function() {
-      var dias = ['domingo','segunda','ter\u00e7a','quarta','quinta','sexta','s\u00e1bado'];
-      var hoje = new Date();
-      var dia = dias[hoje.getDay()];
-      var dd = String(hoje.getDate()).padStart(2, '0');
-      var mm = String(hoje.getMonth() + 1).padStart(2, '0');
-      var yyyy = hoje.getFullYear();
-      document.getElementById('deadline-date').textContent = dia + ', ' + dd + '/' + mm + '/' + yyyy;
-    })();
-  </script>
+    <!-- FAQ -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-titulo"><h2>Perguntas Frequentes</h2></div>
+            <div class="faq-list">
+                <div class="faq-item"><button class="faq-q">Como faço para publicar meu livro? <span>+</span></button><div class="faq-a">Envie seu original pelo formulário de contato ou e-mail. Nossa equipe avaliará e retornará em até 30 dias.</div></div>
+                <div class="faq-item"><button class="faq-q">Vocês aceitam qualquer gênero? <span>+</span></button><div class="faq-a">Sim, publicamos ficção, não-ficção, técnicos, poesia, infantil, etc. Consulte nossa política editorial.</div></div>
+                <div class="faq-item"><button class="faq-q">Quanto custa publicar? <span>+</span></button><div class="faq-a">Trabalhamos com contratos de edição e também serviços editoriais. Solicite um orçamento personalizado.</div></div>
+            </div>
+        </div>
+    </section>
 
+    <!-- CTA FINAL -->
+    <section class="section cta-final">
+        <div class="section-inner">
+            <h2>Pronto para eternizar sua história?</h2>
+            <p>Fale com nossa equipe editorial.</p>
+            <a href="#contato" class="btn-hero btn-hero-primary" style="margin-top:20px;">Quero Publicar</a>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section" id="contato">
+        <div class="section-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+            <div>
+                <h3>Envie sua mensagem</h3>
+                <form style="display:flex; flex-direction:column; gap:14px;">
+                    <input type="text" placeholder="Nome" required>
+                    <input type="email" placeholder="E-mail" required>
+                    <textarea rows="5" placeholder="Mensagem ou proposta"></textarea>
+                    <button type="submit" class="btn-hero btn-hero-primary">Enviar</button>
+                </form>
+            </div>
+            <div>
+                <h3>Onde estamos</h3>
+                <p>Rua da Literatura, 123 - São Paulo, SP<br>📞 (11) 99999-9999<br>📧 contato@editoratpaiva.com.br</p>
+                <div style="height:250px; background:#ddd; border-radius:8px; margin-top:16px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197... " width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-col"><h4>Editora Tpaiva</h4><p>Editora Tpaiva T Paiva de Vasconcelos Edição Livros<br>CNPJ: 64.704.797/0001-90</p></div>
+            <div class="footer-col"><h4>Links</h4><ul><li><a href="#">Início</a></li><li><a href="#">Catálogo</a></li><li><a href="#">Publicar</a></li><li><a href="#">Blog</a></li></ul></div>
+            <div class="footer-col"><h4>Gêneros</h4><ul><li>Romance</li><li>Fantasia</li><li>Não-Ficção</li><li>Infantojuvenil</li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacidade.html">Política de Privacidade</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="aviso.html">Aviso Legal</a></li><li><a href="reembolso.html">Reembolso</a></li></ul></div>
+            <div class="footer-col"><h4>Redes</h4><div class="footer-redes"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
+        </div>
+        <div class="footer-bottom">© 2026 Editora Tpaiva T Paiva de Vasconcelos Edição Livros – Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 80 });
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+            hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = '';
+        }));
+
+        // Catálogo dinâmico
+        const livros = [
+            { titulo:'O Jardim das Sombras', autor:'Clara Mendes', genero:'romance', img:'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80' },
+            { titulo:'Estrelas de Andrômeda', autor:'Rafael Torres', genero:'fantasia', img:'https://images.unsplash.com/photo-1535666669445-e8c15cddc7c8?w=400&q=80' },
+            { titulo:'Mente Organizada', autor:'Beatriz Salles', genero:'naoficcao', img:'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80' },
+            { titulo:'Manual do Concreto', autor:'Eng. Pedro Alves', genero:'tecnicos', img:'https://images.unsplash.com/photo-1586281380349-6327b4c4a1b8?w=400&q=80' },
+            { titulo:'Aventuras de Luna', autor:'T. Paiva', genero:'infantil', img:'https://images.unsplash.com/photo-1511108690759-009324a91911?w=400&q=80' },
+            { titulo:'Poesia Reunida', autor:'Vários', genero:'romance', img:'https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=400&q=80' },
+        ];
+        const grid = document.getElementById('livrosGrid');
+        function renderLivros(filtro='todos'){
+            const filtrados = filtro==='todos' ? livros : livros.filter(l=>l.genero===filtro);
+            grid.innerHTML = filtrados.map(l=>`
+            <div class="livro-card">
+                <div class="livro-img"><img src="${l.img}" alt="${l.titulo}"></div>
+                <div class="livro-body">
+                    <span class="genero">${l.genero}</span>
+                    <h4>${l.titulo}</h4>
+                    <p class="autor">${l.autor}</p>
+                    <a href="#" class="btn-detalhes">Detalhes</a>
+                </div>
+            </div>`).join('');
+        }
+        document.querySelectorAll('.catalogo-filtros button').forEach(btn=>{
+            btn.addEventListener('click',()=>{
+                document.querySelector('.catalogo-filtros .active').classList.remove('active');
+                btn.classList.add('active');
+                renderLivros(btn.dataset.filter);
+            });
+        });
+        renderLivros();
+
+        // FAQ
+        document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
+            const item = q.parentElement;
+            item.classList.toggle('active');
+        }));
+    </script>
 </body>
 </html>
